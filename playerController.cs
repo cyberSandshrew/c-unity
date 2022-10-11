@@ -24,10 +24,15 @@ public class playerController : MonoBehaviour
     public float clockwise = 1000.0f;
     public float counterClockwise = -5.0f;
 
+    public float Health = 10f;
+
+    // Start is called before the first frame update
+    
+
     void Start()
     {
         //Set Cursor to not be visible
-        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
@@ -63,7 +68,7 @@ public class playerController : MonoBehaviour
         }
 
 
-        //mouse move
+        // camera mouse move
         transform.Rotate(Vector3.up * Input.GetAxis("Mouse X") * MouseSpeed);
         
         // makes space bar jump and checks if standing on ground
@@ -85,10 +90,22 @@ public class playerController : MonoBehaviour
     // checks if grounded
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.contacts[0].normal == Vector3.up)
+
+        if (collision.gameObject.tag == "enemy")
         {
-            isGrounded = true;
+            Health -= 1;
         }
+
+
+        if (Health <= 0)
+        {
+            GameOver();
+        }
+
+        //if (collision.contacts[0].normal == Vector3.up)
+        //{
+        isGrounded = true;
+        //}
     }
     // relods scene on game over
     public void GameOver()

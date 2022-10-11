@@ -1,29 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using UnityEngine.UI;
+
+
 
 public class Enemy : MonoBehaviour
 {
-    
-    public int curHp;// curent hit points
+    public int speed;
 
-    public int maxHp;  //max hit points
+    public GameObject player;
 
-    public int goldToGive;  //goldgiven
+    void Start()
 
-    public Image healthBarFill; //fill
-
-    public void Damage()
     {
-        //Subtract 1 from curHP
-        curHp--;
-        //Update health bar
-        healthBarFill.fillAmount = (float)curHp / (float)maxHp;
+        //face the player
+        transform.Rotate(180, 0, 0);
 
-        //if (curHp <= 0)
-       // {
-           // Defeated();
-        //}
+    }
+
+    void Update()
+
+    {
+        // move to player
+        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+
     }
 }
+
