@@ -8,20 +8,16 @@ public class firingEnemy : MonoBehaviour
     // The speed at which the enemy will move
     public float speed = 1.0f;
 
-    // The projectile prefab that the enemy will launch at the player
-    public GameObject projectilePrefab;
+    
 
     // The distance at which the enemy will start moving towards the player
     public float detectionRange = 10.0f;
 
-    // The distance at which the enemy will stop and start firing at the player
-    public float firingRange = 5.0f;
+    
 
-    // The time between each shot (in seconds)
-    public float fireRate = 1.0f;
+    
 
-    // The time when the enemy can fire again (in seconds)
-    private float cooldown = 0.0f;
+    
 
     void Update()
     {
@@ -34,23 +30,14 @@ public class firingEnemy : MonoBehaviour
             // Move the enemy towards the player
             MoveTowardsPlayer();
 
-            // Check if the player is within the enemy's firing range
-            if (distance <= firingRange)
-            {
-                // Check if the enemy's cooldown has expired
-                if (cooldown <= 0.0f)
-                {
-                    // Launch a projectile at the player
-                    LaunchProjectile();
-
-                    // Reset the enemy's cooldown
-                    cooldown = fireRate;
-                }
-            }
+            
         }
 
-        // Decrement the enemy's cooldown by the time that has passed since the last frame
-        cooldown -= Time.deltaTime;
+        // destroy from falling
+        if (transform.position.y < -100)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void MoveTowardsPlayer()
@@ -63,16 +50,12 @@ public class firingEnemy : MonoBehaviour
 
         // Move the enemy in the direction of the player at the specified speed
         transform.position += direction * speed * Time.deltaTime;
+
+        transform.LookAt(player.transform);
+
     }
 
-    void LaunchProjectile()
-    {
-        // Instantiate a new projectile at the enemy's position and rotation
-        GameObject projectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
-
-        // Set the projectile's velocity so that it moves towards the player
-        projectile.GetComponent<Rigidbody>().velocity = (player.position - transform.position).normalized * speed;
-    }
+    
 }
 
 
