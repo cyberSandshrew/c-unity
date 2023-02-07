@@ -9,7 +9,6 @@ public class firingEnemy : MonoBehaviour
     // The speed at which the enemy will move
     public float speed = 1.0f;
 
-
     // The distance at which the enemy will start moving towards the player
     public float detectionRange = 10.0f;
 
@@ -36,7 +35,6 @@ public class firingEnemy : MonoBehaviour
         {
             // Move the enemy towards the player
             MoveTowardsPlayer();
-
 
         }
         else if(isGrounded)
@@ -99,6 +97,3 @@ public class firingEnemy : MonoBehaviour
         
     }
 }
-
-
-
