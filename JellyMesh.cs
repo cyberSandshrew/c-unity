@@ -1,9 +1,6 @@
 using System.Collections;
-
 using System.Collections.Generic;
-
 using UnityEngine;
-
 
 
 public class JellyMesh : MonoBehaviour
@@ -17,7 +14,6 @@ public class JellyMesh : MonoBehaviour
     public float stiffness = 1f;
 
     public float damping = 0.75f;
-
 
 
     private Mesh OriginalMesh, MeshClone;
@@ -51,8 +47,6 @@ public class JellyMesh : MonoBehaviour
             jv[i] = new JellyVertex(i, transform.TransformPoint(MeshClone.vertices[i]));
 
         }
-
-
 
     }
 
