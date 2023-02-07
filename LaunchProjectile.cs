@@ -11,11 +11,7 @@ public class LaunchProjectile : MonoBehaviour
     public GameObject projectile;
     public float launchVelocity = 700f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+  
 
     // Update is called once per frame
     void Update()
@@ -29,9 +25,6 @@ public class LaunchProjectile : MonoBehaviour
                 ball.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, launchVelocity, 0));
             }
         }
-
-        
-        //transform.Rotate(Vector3.right * Input.GetAxis("Mouse Y") * MouseSpeed);
 
     }
 
