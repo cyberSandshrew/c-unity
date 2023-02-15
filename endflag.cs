@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 public class endflag : MonoBehaviour
 {
 
-
     public string nextSceneName;
     public bool lastLevel;
 
