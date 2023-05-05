@@ -11,10 +11,6 @@ public class GrappleGun : MonoBehaviour
     private float maxDistance = 100f;
     private SpringJoint joint;
 
-    
-
-    
-
     private bool grappled = false;
 
     void Awake()
